@@ -36,7 +36,7 @@ TODO: Add long description of the pod here.
     ss.vendored_frameworks = '${POD_NAME}.framework'
   end
   
-  ss.subspec 'Core' do |ss|
+  s.subspec 'Core' do |ss|
     ss.source_files = '${POD_NAME}/Classes/**/*'
   end
   

@@ -58,10 +58,11 @@ module Pod
           end
       end
 
-      prefix = "BT"
+      prefix = nil
 
       loop do
         prefix = configurator.ask("What is your class prefix").upcase
+        prefix = "BT" if prefix.empty?
 
         if prefix.include?(' ')
           puts 'Your class prefix cannot contain spaces.'.red
