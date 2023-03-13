@@ -1,5 +1,6 @@
 plugin 'cocoapods-publish'
-#ENV['USE_FRAMEWORK'] = '1'
+ENV['USE_FRAMEWORK'] = '1'
+ENV['USE_DEV_FRAMEWORK_${POD_NAME}'] = '1'
 
 use_frameworks!
 

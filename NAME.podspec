@@ -1,4 +1,6 @@
 use_framework = ENV['USE_FRAMEWORK']
+dev_framework = ENV['USE_DEV_FRAMEWORK_${POD_NAME}']
+use_framework = dev_framework ? false : use_framework
 
 Pod::Spec.new do |s|
   s.name             = '${POD_NAME}'
