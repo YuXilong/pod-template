@@ -30,6 +30,7 @@ TODO: Add long description of the pod here.
   end
 
   s.ios.deployment_target = '10.0'
+  s.swift_version         = '5.0'
   s.static_framework      = true
   s.pod_target_xcconfig   = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64', 'VALID_ARCHS' => 'arm64' }
   s.user_target_xcconfig  = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64', 'VALID_ARCHS' => 'arm64' }
