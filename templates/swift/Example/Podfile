@@ -1,13 +1,19 @@
 plugin 'cocoapods-publish'
-ENV['USE_FRAMEWORK'] = '1'
-ENV['USE_DEV_FRAMEWORK_${POD_NAME}'] = '1'
+
+# 开启二进制模式
+baitu_use_frameworks!
 
 use_frameworks!
 
 platform :ios, '10.0'
 
 target '${POD_NAME}_Example' do
-  pod '${POD_NAME}', :path => '../'
+
+  # 指定源码模式
+  pod '${POD_NAME}', :path => '../', :dev => 1
+
+  # 指定二进制模式
+  # pod '${POD_NAME}', :path => '../'
 
   target '${POD_NAME}_Tests' do
     inherit! :search_paths
