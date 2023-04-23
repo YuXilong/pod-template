@@ -2,6 +2,9 @@ use_framework = ENV['USE_FRAMEWORK']
 dev_framework = ENV['USE_DEV_FRAMEWORK_${POD_NAME}']
 use_framework = dev_framework ? false : use_framework
 
+# 支持的混淆模式, 例如：SUPPORT_MIXUP['XXX', 'YYY']
+SUPPORT_MIXUP = []
+
 Pod::Spec.new do |s|
   s.name             = '${POD_NAME}'
   s.version          = '99'
