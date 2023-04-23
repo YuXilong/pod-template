@@ -16,10 +16,11 @@ TODO: Add long description of the pod here.
   s.homepage         = git_source
   s.author           = { '${USER_NAME}' => '${USER_EMAIL}' }
 
+  zip_file_path = s.version.to_s.include?('.b') ? "repository/files/#{s.version.to_s.split('.b')[0]}-beta" : "repository/files/#{s.version.to_s}"
   if use_framework
     s.default_subspec = 'CoreFramework'
     s.source = { 
-      :http => "https://gitlab.v.show/api/v4/projects/126/repository/files/#{s.name.to_s}-#{s.version.to_s}.zip/raw?ref=main",
+      :http => "https://gitlab.v.show/api/v4/projects/83/#{zip_file_path}%2F#{s.name.to_s}-#{s.version.to_s}.zip/raw?ref=main",
       :type => "zip",
       :headers => ["Authorization: Bearer #{ENV['GIT_LAB_TOKEN']}"]
     }  
@@ -29,7 +30,7 @@ TODO: Add long description of the pod here.
     s.source            = { :git => git_source, :tag => s.version.to_s }
   end
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '11.4'
   s.swift_version         = '5.0'
   s.static_framework      = true
   s.pod_target_xcconfig   = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64', 'VALID_ARCHS' => 'arm64' }
