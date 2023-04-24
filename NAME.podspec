@@ -5,6 +5,9 @@ use_framework = dev_framework ? false : use_framework
 # 支持的混淆模式, 例如：SUPPORT_MIXUP['XXX', 'YYY']
 SUPPORT_MIXUP = []
 
+# Beta版本 默认不包含BT 例如：BETA_SUPPORT_MIXUP = ['VO']
+BETA_SUPPORT_MIXUP = []
+
 Pod::Spec.new do |s|
   s.name             = '${POD_NAME}'
   s.version          = '99'
