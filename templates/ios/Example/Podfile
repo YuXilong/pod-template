@@ -5,7 +5,7 @@ baitu_use_frameworks!
 
 use_frameworks!
 
-platform :ios, '11.4'
+platform :ios, '12.0'
 
 target '${POD_NAME}_Example' do
 
