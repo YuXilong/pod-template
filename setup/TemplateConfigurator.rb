@@ -115,7 +115,7 @@ module Pod
       end
 
       `git add Example/#{pod_name}.xcodeproj/project.pbxproj`
-      `git commit -m "Initial commit"`
+      `git commit --no-verify -m "Initial commit"`
     end
 
     def clean_template_files
