@@ -5,7 +5,7 @@ baitu_use_frameworks!
 
 use_frameworks!
 
-platform :ios, '13.0'
+platform :ios, '15.0'
 
 target '${POD_NAME}_Example' do
 
@@ -24,6 +24,15 @@ end
 
 # 跳过资源签名
 post_install do |installer|
+  # 按 Podfile/podspec 恢复最低版本，避免 cocoapods-publish 统一覆盖为 15.1。
+  installer.target_installation_results.each do |results|
+    results.each_value do |result|
+      result.native_target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = result.target.platform.deployment_target.to_s
+      end
+    end
+  end
+
   installer.generated_projects.each do |project|
     project.targets.each do |target|
         target.build_configurations.each do |config|

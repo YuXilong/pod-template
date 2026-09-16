@@ -97,7 +97,7 @@ RUBY
 
       unless @remove_demo_target
         # change app file prefixes
-        ["CPDAppDelegate.h", "CPDAppDelegate.m", "CPDViewController.h", "CPDViewController.m"].each do |file|
+        ["CPDAppDelegate.h", "CPDAppDelegate.m", "CPDSceneDelegate.h", "CPDSceneDelegate.m", "CPDViewController.h", "CPDViewController.m"].each do |file|
           before = project_folder + "/PROJECT/" + file
           next unless File.exist? before
 

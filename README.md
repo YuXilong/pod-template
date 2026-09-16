@@ -24,3 +24,15 @@ It is open to communal input, but adding new features, or new ideas are probably
 ## Requirements:
 
 - CocoaPods 1.0.0+
+- Generated iOS pods and example apps require iOS 15.0+.
+
+## iOS app lifecycle
+
+Both Objective-C and Swift examples use the [UIKit scene lifecycle](https://developer.apple.com/documentation/technotes/tn3187-migrating-to-the-uikit-scene-based-life-cycle)
+required when building with the iOS 27 SDK. `Info.plist` configures a single `UIWindowScene` and
+UIKit creates its window from `Main.storyboard`. Add UI lifecycle handling (such
+as `sceneDidBecomeActive` and `sceneDidEnterBackground`) to `SceneDelegate`; keep
+application-wide initialization in `AppDelegate`.
+
+Run `ruby setup/tests/scene_templates_test.rb` to check scene configuration,
+generated file references, and minimum iOS versions for both templates.
