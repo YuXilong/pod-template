@@ -1,7 +1,3 @@
-use_framework = ENV['USE_FRAMEWORK']
-dev_framework = ENV['USE_DEV_FRAMEWORK_${POD_NAME}']
-use_framework = dev_framework ? false : use_framework
-
 # 支持的混淆模式, 例如：SUPPORT_MIXUP = ['XXX', 'YYY']
 SUPPORT_MIXUP = []
 
@@ -17,35 +13,18 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  git_source = use_framework ? "https://gitlab.v.show/ios_framework/#{s.name.to_s}.git" : "https://gitlab.v.show/ios_component/#{s.name.to_s}.git"
-
-  s.homepage         = git_source
+  s.homepage         = "https://gitlab.v.show/ios_component/#{s.name}.git"
   s.author           = { '${USER_NAME}' => '${USER_EMAIL}' }
-
-  zip_file_path = s.version.to_s.include?('.b') ? "repository/files/#{s.version.to_s.split('.b')[0]}-beta" : "repository/files/#{s.version.to_s}"
-  if use_framework
-    s.default_subspec = 'CoreFramework'
-    s.source = { 
-      :http => "https://gitlab.v.show/api/v4/projects/83/#{zip_file_path}%2F#{s.name.to_s}-#{s.version.to_s}.zip/raw?ref=main",
-      :type => "zip",
-      :headers => ["Authorization: Bearer #{ENV['GIT_LAB_TOKEN']}"]
-    }  
-  else
-    s.default_subspec   = 'Core'
-    s.license           = { :type => 'MIT', :file => 'LICENSE' }
-    s.source            = { :git => git_source, :tag => s.version.to_s }
-  end
+  s.default_subspec  = 'Core'
+  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  s.source           = { :git => s.homepage, :tag => s.version.to_s }
 
   s.ios.deployment_target = '15.0'
   s.swift_version         = '5.0'
   s.static_framework      = true
 
-  s.subspec 'CoreFramework' do |ss|
-    ss.vendored_frameworks = '${POD_NAME}.framework'
-  end
-  
   s.subspec 'Core' do |ss|
     ss.source_files = '${POD_NAME}/Classes/**/*'
   end
-  
+
 end
